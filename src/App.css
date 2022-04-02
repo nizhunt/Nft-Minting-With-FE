@@ -31,7 +31,7 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-image: url("https://wallpx.com/image/2020/11/sunset-pixel-scenery-mountain.jpg");
+  background-image: url("./assets/sunset-pixel-scenery-mountain.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

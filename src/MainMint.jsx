@@ -1,6 +1,7 @@
 import { BigNumber, ethers } from "ethers";
 import { useState } from "react";
 import roboPunkAbi from "./RoboPunksNFT.json";
+import { Button } from "@chakra-ui/react";
 const roboPunksNFTAddress = "0xD7c893566CF289086451e75DB5B7050ea1d0219e";
 
 const MainMint = ({ accounts, setAccounts }) => {
@@ -42,16 +43,52 @@ const MainMint = ({ accounts, setAccounts }) => {
       <h1>Robo-Punks</h1>
       <p1>
         Welcome to the Punk community, Mint the Punks and get a sneak peak into
-        the future of the cyper world.
+        the future of the cyber world.
       </p1>
       {isConnected ? (
         <div>
           <div>
-            <button onClick={handleDecrement}>-</button>
+            <Button
+              backgroundColor="#D6517D"
+              borderRadius="5px"
+              boxShadow="0px 0px 10px rgba(0, 0, 0, 0.5)"
+              color="white"
+              cursor="pointer"
+              fontFamily="inherit"
+              padding="15px"
+              margin="0 15px"
+              onClick={handleDecrement}
+            >
+              -
+            </Button>
             <input type="number" value={mintAmount} />
-            <button onClick={handleIncrement}>+</button>
+            <Button
+              backgroundColor="#D6517D"
+              borderRadius="5px"
+              boxShadow="0px 0px 10px rgba(0, 0, 0, 0.5)"
+              color="white"
+              cursor="pointer"
+              fontFamily="inherit"
+              padding="15px"
+              margin="0 15px"
+              onClick={handleIncrement}
+            >
+              +
+            </Button>
           </div>
-          <button onClick={handleMint}>Mint Now</button>
+          <Button
+            backgroundColor="#D6517D"
+            borderRadius="5px"
+            boxShadow="0px 0px 10px rgba(0, 0, 0, 0.5)"
+            color="white"
+            cursor="pointer"
+            fontFamily="inherit"
+            padding="15px"
+            margin="0 15px"
+            onClick={handleMint}
+          >
+            Mint Now!
+          </Button>
         </div>
       ) : (
         <p>

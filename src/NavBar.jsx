@@ -1,4 +1,4 @@
-import { Flex, Box, Spacer, LinkBox } from "@chakra-ui/react";
+import { Flex, Box, Spacer, LinkBox, Button } from "@chakra-ui/react";
 
 const NavBar = ({ accounts, setAccounts }) => {
   const isConnected = Boolean(accounts[0]);
@@ -17,7 +17,7 @@ const NavBar = ({ accounts, setAccounts }) => {
     <Flex justify="space-between" align="center" padding="0 0px">
       {/* Left Side: Social media icons: */}
 
-      <Flex justify="space-around" align="center" width="40%" padding="0 30px">
+      <Flex justify="space-around" align="center" width="70%" padding="0 30px">
         <a color="white" href="https://facebook.com">
           <LinkBox> Twitter</LinkBox>
         </a>
@@ -50,9 +50,23 @@ const NavBar = ({ accounts, setAccounts }) => {
 
         {/* Connect */}
         {isConnected ? (
-          <p>Connected</p>
+          <Box margin="0 15px" padding="15px">
+            Connected
+          </Box>
         ) : (
-          <button onClick={handleConnect}>Connect</button>
+          <Button
+            backgroundColor="#D6517D"
+            borderRadius="50px"
+            boxShadow="0px 0px 10px rgba(0, 0, 0, 0.5)"
+            color="white"
+            cursor="pointer"
+            fontFamily="inherit"
+            padding="15px"
+            margin="0 15px"
+            onClick={handleConnect}
+          >
+            Connect
+          </Button>
         )}
       </Flex>
     </Flex>
