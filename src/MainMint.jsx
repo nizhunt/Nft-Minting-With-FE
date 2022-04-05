@@ -1,7 +1,7 @@
 import { BigNumber, ethers } from "ethers";
 import { useState } from "react";
 import roboPunkAbi from "./RoboPunksNFT.json";
-import { Button } from "@chakra-ui/react";
+import { Button, Box } from "@chakra-ui/react";
 const roboPunksNFTAddress = "0xD7c893566CF289086451e75DB5B7050ea1d0219e";
 
 const MainMint = ({ accounts, setAccounts }) => {
@@ -41,17 +41,17 @@ const MainMint = ({ accounts, setAccounts }) => {
   return (
     <>
       <h1>Robo-Punks</h1>
-      <p1>
+      <Box padding="60px 80px">
         Welcome to the Punk community, Mint the Punks and get a sneak peak into
         the future of the cyber world.
-      </p1>
+      </Box>
       {isConnected ? (
-        <div>
-          <div>
+        <Box>
+          <Box>
             <Button
               backgroundColor="#D6517D"
               borderRadius="5px"
-              boxShadow="0px 0px 10px rgba(0, 0, 0, 0.5)"
+              boxShadow="0px 0px 20px rgba(0, 0, 0, 0.9)"
               color="white"
               cursor="pointer"
               fontFamily="inherit"
@@ -75,7 +75,7 @@ const MainMint = ({ accounts, setAccounts }) => {
             >
               +
             </Button>
-          </div>
+          </Box>
           <Button
             backgroundColor="#D6517D"
             borderRadius="5px"
@@ -89,12 +89,12 @@ const MainMint = ({ accounts, setAccounts }) => {
           >
             Mint Now!
           </Button>
-        </div>
+        </Box>
       ) : (
-        <p>
+        <Box padding="120">
           You are not yet connected mate, connect your wallet first by pressing
           the Connect button in navigation.
-        </p>
+        </Box>
       )}
     </>
   );

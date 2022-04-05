@@ -17,7 +17,13 @@ const NavBar = ({ accounts, setAccounts }) => {
     <Flex justify="space-between" align="center" padding="0 0px">
       {/* Left Side: Social media icons: */}
 
-      <Flex justify="space-around" align="center" width="70%" padding="0 30px">
+      <Flex
+        justify="space-around"
+        align="center"
+        width="70%"
+        padding="0 30px"
+        my="50px"
+      >
         <a color="white" href="https://facebook.com">
           <LinkBox> Twitter</LinkBox>
         </a>
@@ -63,6 +69,7 @@ const NavBar = ({ accounts, setAccounts }) => {
             fontFamily="inherit"
             padding="15px"
             margin="0 15px"
+            opacity="0.85"
             onClick={handleConnect}
           >
             Connect
