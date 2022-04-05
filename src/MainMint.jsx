@@ -1,11 +1,13 @@
 import { BigNumber, ethers } from "ethers";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import roboPunkAbi from "./RoboPunksNFT.json";
 import { Button, Box } from "@chakra-ui/react";
 const roboPunksNFTAddress = "0xD7c893566CF289086451e75DB5B7050ea1d0219e";
 
 const MainMint = ({ accounts, setAccounts }) => {
   const [mintAmount, setMintAmount] = useState(1);
+  const [mintHash, setMintHash] = useState();
   const isConnected = Boolean(accounts[0]);
 
   async function handleMint() {
@@ -22,6 +24,8 @@ const MainMint = ({ accounts, setAccounts }) => {
           value: ethers.utils.parseEther((0.02 * mintAmount).toString()),
         });
         console.log("response:", response);
+        console.log(response.hash);
+        setMintHash(response.hash);
       } catch (e) {
         console.log("erroe: ", e);
       }
@@ -36,6 +40,10 @@ const MainMint = ({ accounts, setAccounts }) => {
   const handleIncrement = () => {
     if (mintAmount >= 3) return;
     setMintAmount(mintAmount + 1);
+  };
+
+  const checkTransactionHandler = () => {
+    window.open(`https://rinkeby.etherscan.io/tx/${mintHash}`, "_blank");
   };
 
   return (
@@ -70,7 +78,7 @@ const MainMint = ({ accounts, setAccounts }) => {
               cursor="pointer"
               fontFamily="inherit"
               padding="15px"
-              margin="0 15px"
+              margin=" 15px"
               onClick={handleIncrement}
             >
               +
@@ -89,6 +97,21 @@ const MainMint = ({ accounts, setAccounts }) => {
           >
             Mint Now!
           </Button>
+          {mintHash && (
+            <Button
+              backgroundColor="#D6517D"
+              borderRadius="5px"
+              boxShadow="0px 0px 10px rgba(0, 0, 0, 0.5)"
+              color="white"
+              cursor="pointer"
+              fontFamily="inherit"
+              padding="15px"
+              margin="0 15px"
+              onClick={checkTransactionHandler}
+            >
+              Check Transaction
+            </Button>
+          )}
         </Box>
       ) : (
         <Box padding="120">
