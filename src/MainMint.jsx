@@ -14,6 +14,10 @@ const MainMint = ({ accounts, setAccounts }) => {
     if (window.ethereum) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
+      // A contract consist of the following items:
+      // 1. A smart contract address
+      // 2. A ABI (Application Binary Interface)
+      // 3. A signer (the account that will sign the transaction)
       const contract = new ethers.Contract(
         roboPunksNFTAddress,
         roboPunkAbi,
@@ -23,7 +27,7 @@ const MainMint = ({ accounts, setAccounts }) => {
         const response = await contract.mint(BigNumber.from(mintAmount), {
           value: ethers.utils.parseEther((0.02 * mintAmount).toString()),
         });
-        console.log("response:", response);
+        console.table(response);
         console.log(response.hash);
         setMintHash(response.hash);
       } catch (e) {

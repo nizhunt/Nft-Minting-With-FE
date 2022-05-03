@@ -2,16 +2,26 @@ import { Flex, Box, Spacer, LinkBox, Button } from "@chakra-ui/react";
 
 const NavBar = ({ accounts, setAccounts }) => {
   const isConnected = Boolean(accounts[0]);
+  const targetNetworkId = "0x4";
 
-  async function handleConnect() {
+  const handleConnect = async () => {
     if (window.ethereum) {
+      // switch to the target network ie. rinkeby
+      await window.ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: targetNetworkId }],
+      });
+      // refresh the page to get the new accounts
+      // window.location.reload();
+
+      // get the user's accounts
       const _accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
       setAccounts(_accounts);
       console.log(_accounts);
     }
-  }
+  };
 
   return (
     <Flex justify="space-between" align="center" padding="0 0px">
